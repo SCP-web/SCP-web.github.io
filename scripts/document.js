@@ -20,11 +20,11 @@ class Document extends Gamestate {
                 response.status);
                 return;
             }
-        
+            console.log(response.json)
             // Examine the text in the response
-            response.text().then(function(data) {
-                console.log(data);
-            });
+            // response.json().then(function(data) {
+            //     console.log(data);
+            // });
             }
         )
         .catch(function(err) {
