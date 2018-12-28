@@ -1,0 +1,19 @@
+**Item #:** SCP-9003
+
+**Object Class:** Safe
+
+**Special Containment Procedures:** SCP-9003 is to be contained in an opaque room equipped with heat sensors and motion sensors. Access to SCP 9003's containment must only be controlled remotely. Access to SCP-9003's containment must include two parallel doors separating SCP-9003's containment and an antechamber at the main entrance. The entrance antechamber must also be equipped with heat and motion sensors, as well as chemical sterilization apparatus. No conventional cameras or viewing apparatus are to be used in any part of SCP-9003's containment. If sensory instruments detect unexpected changes in SCP-9003's containment, special containment procedure 9003-1 is to be enacted within four hours. If any sensory instruments detect unexpected changes in the entrace antechamber, special containment procedure 9003-2 is to be enacted immediately.
+
+**Special containment procedure 9003-1:**
+In the event that SCP-9003's containment instruments register changes in SCP-9003's containment, no less than two security personnel wearing blindfolds as well as standard foundation head armour must enter SCP-9003's containment. Security personnel should be equipped with close-quarters non-lethal weaponry as well as 0.1M saline solution and cloths. Security personnel must confirm non-visually whether any persons are present within SCP-9003's containment. If so, any persons (henceforth the subjects) must be incapacitated and the area around the eyes must be thoroughly rinsed and cleaned using the saline solution and cloths. After this procedure is complete, one of the security personnel should confirm visually that SCP-9003-B is not present near the eyes of the subjects, and that a second member of the security personnel should confirm that all security personnel can list all subjects. Finally any subjects can be moved to non-anomalous containment areas for questioning.
+
+**Special containment procedure 9003-1:**
+In the event that SCP-9003's containment instruments register changes in SCP-9003's entrance antechamber, a class 3 cognitohazard is to be declared and SCP-9003's entrance antechamber is to be sterilized immediately. Once instruments detect no signs of life within SCP-9003's entrance antechamber, special containment procedure 9003-1 is to be enacted immediately.
+
+**Description:**
+SCP-9003 has two components; SCP-9003-A and SCP-9003-B. 
+
+SCP-9003-A is an unmarked 5cm long, black, cylindrical container, which unscrews in the middle. Inside SCP-9003-A is contained a brush resembling those used to apply mascara, as well as SCP-9003-B. SCP-9003-A cannot be emptied of SCP-9003-B. Any attempt to do so results in SCP-9003-A secreting SCP-9003-B from it's inner faces. 
+
+SCP-9003-B is a viscous black fluid containing black pigments and thickening agents commonly found in female beauty products. While SCP-9003-B is applied to a subject's eyelashes, any person who makes visual contact with the subject will forget that they exist, even when the subject would otherwise impede the movements of others, or cause others bodily harm. If SCP-9003-B is only partially applied or removed, it's effects dissipate.
+

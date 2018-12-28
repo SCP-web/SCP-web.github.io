@@ -1,0 +1,31 @@
+@keyframes typing { from { width: 0; } }
+@keyframes blink-caret { 50% { border-color: transparent; } }
+
+#document { 
+    background-color: black;
+    color: rgb(0, 255, 0);
+    font-family: 'Consolas', 'Monaco', monospace;
+    padding: 1em;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    /* border-right: .1em solid; */
+    /* fallback */
+    /* width: 16.5em; */
+    /* # of chars */ 
+	/* width: 30ch;  */
+	/* margin: 2em 1em; */
+	/* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* # of steps = # of chars */
+	/* animation: typing 20s steps(30, end), 
+	           blink-caret .5s step-end infinite alternate; */
+}
+
+#document .highlight {
+    color: black;
+    background-color: rgb(0, 255, 0);
+}

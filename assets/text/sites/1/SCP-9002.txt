@@ -1,0 +1,56 @@
+**Item #:** SCP-9002
+
+**Object Class:** Euclid
+
+**Special Containment Procedures:**
+SCP-9002 is to be kept in any unoccupied accommodations at Site-302. All doors and windows should be locked and barred, and SCP-9002's quarters should be well lit and well furnished. Cameras must be installed such that the entirety of SCP-9002's quarters are fully visible. Any personnel seeking to interact with SCP-9002 must be supervised by an on-site psychologist. Access to SCP-9002's containment is limited to personnel with class 2 security clearance or higher.
+
+**Addendum:**
+As of supervised research session 9002-1, any staff with family are strongly discouraged from interacting with SCP-9002.
+
+**Description:** 
+SCP-9002 is a small animal with short brown fur. It stands 30cm high and exhibits features of primates such as a prehensile hands and feet (with opposable thumbs) as well as high intelligence and speech. Subjects exposed to SCP-9002 experience anxiety, shortness of breath and hyperventilation. Subjects engaging in conversation with SCP-9002 report a sense of fear that perons or objects which came up in conversation with SCP-9002 may come to harm. This effect is not mitigated even when the subject of conversation is present during interactions with SCP-9002 and is visibly unharmed. 
+
+**Addendum:**
+During interview 9002-1 it was determined that SCP-9002's effects do not apply to conversations regarding SCP-9001. This suggests that SCP-9002's effects do not extend to objects incapable of being damaged.    
+
+**Interview 9002-1:**
+Participants:   Dr Jonas Knecht (K) - Interviewer
+				SCP-9002 (9002) - Interviewee
+				Dr Cynthia Jefferson (J) - Surpervisor
+
+K: Good morning 9002.
+
+9002: Morning? Rainclouds there.
+
+K: Mein Gott...
+
+(K rushes to look out a window.)
+
+K: You're right 9002, the morning is ruined.
+
+(Knecht starts pacing the room, hyperventilating.)
+
+J: Administering benzodiazepines.
+
+(K's breathing returns to normal)
+
+K: Thank you Cynthia.
+
+9002: Who you?
+
+K: Nobody, drop the subject. Have you heard of SCP-9001?
+
+9002: Nine... one...
+
+(K begins reading SCP-9001's file)
+
+K: "SCP-9001 is a reflective black cuboid 10cm in diameter. One face of SCP-9001-"
+
+(9002 begins running around the room, emitting monkey-like screeches)
+
+K: Do we have the data we need?
+
+J: Yes.
+
+END OF TRANSCRIPT

@@ -1,0 +1,20 @@
+**Item #:** SCP-9005
+
+**Object Class:** Euclid
+
+**Special Containment Procedures:**
+The staff cafeteria in Site-301 must constantly be occupied by no less than 10 and preferably more than 20 staff engaged in conversation. The topics of conversation are of no consequence. No other area within 100m of the Site-301 cafeteria may have higher occupancy than the Site-301 cafeteria. In the case of a containment breach or failure to meet the above conditions, containment protocol 9005-1 is to be executed.
+
+**Containment Protocol 9005-1**
+All non-critical Site-301 staff are to gather in the last place SCP-9005-A was observed, or in the Site-301 cafeteria if the last location of SCP-9005-A is unknown. All visits to Site-301 are to be postponed. A large parade is to be held on Site-301 as soon as possible, ensuring that the parade is as festive, loud, and attention-grabbing as possible. During the parade, staff must be surveyed for signs of SCP-9005-B, and any staff experiencing symptoms should be given class C amnestics. Hereafter it is safe to resume normal containment procedures.
+
+**Addendum:**
+
+**Description:** 
+
+Warning: Reading the following description risks breaching SCP-9005's containment. All security level 3 or lower foundation member that has visited, intends to visit, or is currently visiting Site-301 are prohibited from accessing the following description. Those with clearance level 4 or higher are advised strongly against reading the following description if they fall into one of the aformentioned categories.
+
+SCP-9005 is an auditory hallucination that takes one of two forms; SCP-9005-A or SCP-9005-B. SCP-9005-A is perceived as the sound of muffled conversation. The hallucination is currently localised around the Site-301 staff cafeteria, and extends approximately 50m from the center of the room. There are currently no known adverse effects of SCP-9005-A other than mild insomnia, which is treatable by relocating sleeping quarters more than 50m away from SCP-9005-A. If there are fewer than 10 individuals within 50m of SCP-9005-A, it will relocate to the nearest location with at least 10 individuals within a 50m radius, exhibiting a preference for more densely occupied areas. Regardless of distance from SCP-9005-A, any person who questions the source of SCP-9005-A (eg. suspects the SCP-9005-A to be a hallucination, wonders where SCP-9005-A originates) immediately ceases to percieve SCP-9005-A. Those experiencing SCP-9005-A have reported a 5 to 10 second period of silence before SCP-9005-B manifests in their perception. SCP-9005-B is an auditory hallucination taking the form of a disembodied male voice. The voice is described by those experiencing SCP-9005-B as unnaturally deep, as well as close to one ear. It is as yet unknown whether SCP-9005-B's adverse effects are anomalous, or simply a biological reaction to disturbing auditory hallucinations. Scp-9005-B's adverse effects include: anxiety, paranoia, insomnia, headaches and auditory/visual hallucinations other than SCP-9005-B that vary for each affected individual. 9005 DOES NOT CONTROL YOUR THOUGHTS. HE IS A DISTRACTION AND NOTHING MORE. SCP-9005-B is commonly reported to present criticism of an affected person's actions or beliefs, voice doubts about an affected person's worth, and exaggerate spurious or unlikely concerns, such as my superiors terminating me for writing this document. See experiment log 9005-1 for details.
+
+**Experiment Log 9005-1:**
+

@@ -1,0 +1,16 @@
+**Item #:** SCP-9004
+
+**Object Class:** Safe
+
+**Special Containment Procedures:**
+SCP-9004 is currently kept in the courtyard of Site-301. SCP-9004 should be kept in a natural environment where there is a steady flow of human traffic.
+
+**Description:**
+SCP-9004 is a stone head, 10.2m high, rendered in the Muiscan style. 
+
+At undetermined intervals, SCP-9004 takes on the mental traits of a subject in its surroundings. The mechanism by which SCP-9004 acquires these traits is unknown, but the only known documented case (taking on the traits of SCP-9004-A) correlates with a disappearance of the subject. As of 9/12/2017 SCP-9004 has the traits of a pilgrim known as Lorena Valencia. Those in the immediate proxmity of SCP-9004 report experiencing thoughts and feelings associated with the subject whose mental traits were taken on by SCP-9004. Currently, mental clarity and peacefulness are commonly reported.
+
+Class-2 amnestics are sufficient to negate the effects of SCP-9004.
+
+**Addendum 9004-1:**
+SCP-9004 was discovered in northern Colombia by a pilgrim henceforth referred to as SCP-9004-A. SCP-9004-A seems to be exempt from the effects of SCP-9004, positive or negative. The foundation was alerted to SCP-9004's presence when an archaelogical expedition acting on SCP-9004-A's information started experiencing SCP-9004's effects. After administering amnestics to the archaelogical group, SCP-9004 and SCP-9004-A were both transported to Site-301, however SCP-9004-A went missing during the trip. By correlating melodies emanating from SCP-9004 with known details about SCP-9004-A, it has been determined that SCP-9004-A provided SCP-9004 with its current characteristics.

@@ -1,0 +1,60 @@
+**Item #:** SCP-9001
+
+**Object Class:** Safe
+
+Flexure Strength: > 50 kN
+
+**Special Containment Procedures:** 
+SCP-9001 is to be kept within a locked safe in Site-$$$. The safe should be composed of only opaque materials.
+
+**Description:**
+SCP-9001 is a reflective black cuboid 10cm in diameter. One face of SCP-9001 is slightly curved, while laser measurements indicate no bumps or depressions of any kind on any other faces. Apart from the curved face, all faced meet each other face at exactly 90 TODO degrees.No part of SCP-9001 can be damaged with conventional tools.
+
+When placed in the presence of SCP-9001, those perceiving SCP-9001 begin to describe irregularities in its otherwise geometrically perfect construction. Demonstrating by measurement that SCP-9001 is geometrically perfect does not alleviate SCP-9001's effects. Any persons who have experienced this effect continue to describe other imperfections in objects around them, especially in architecture and other manmade objects. Continued exposure to SCP-9001 results in the formation of obsessive-compulsive tendencies in those affected, culminating in complete psychosis. Those affected demonstrate intense focus attempting to fix irreuglarities in manmade objects around them, and eventually in themselves. There is an 80% death rate among those exposed to SCP-9001 who reach this final stage. Amnestics have been unsuccessful in mediating SCP-9001's effects. The only known treatment for SCP-9001's effects is prolonged habitation of a natural environment devoid of any objects that follow geometric forms. See incident 301-A for a complete description of known cases of survival.
+
+**Monitored research session 9001-1:**
+Participants:   Dr Jonas Knecht (K) - Examiner
+				Dr Cynthia Jefferson (J) - Surpervisor
+
+Date: 10/07/2017
+
+K: Beginning tensile strength testing
+
+K: 100N
+
+K: 200N
+
+K: 500N, I don't think this is going anywhere Cynthia
+
+J: Move into kilonewton ranges, if we're going to report that this thing is indestructible we'd better at least be sure.
+
+K: 1kN
+
+K: 10kN
+
+K: 25kN
+
+K: 50kN. We'll have to call it there Cynthia, the only deformation is in our instruments.
+
+**Monitored research session 9001-2**:
+
+Participants:   Dr Jonas Knecht (K) - Examiner
+				Dr Cynthia Jefferson (J) - Supervisor
+
+K: Cynthia, do you notice that 9001 is not completely flat? If I move it like this...
+
+(Dr Knecht places SCP-9001 face down on the table) 
+
+K: See? Everything else about 9001 is geometrically perfect. Only this face has a slight deformation.
+
+C: I can't tell on the monitor, it seems to be lying flat on the table to me.
+
+(Dr Jefferson switches to Dr Knecht's shoulder camera)
+
+C: It looks flat to me Jonas.
+
+K: No there is definitely some wobbling when it rests on the table. Look!
+
+C: I'm cutting the video feed Jonas, we're not seeing the same thing any more.
+
+**END OF TRANSCRIPT**
