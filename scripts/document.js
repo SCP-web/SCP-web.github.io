@@ -22,8 +22,8 @@ class Document extends Gamestate {
             }
         
             // Examine the text in the response
-            response.text().then(function(data) {
-                this.tempString = data;
+            response.json().then(function(data) {
+                // this.tempString = data;
                 console.log(data);
             });
             }
