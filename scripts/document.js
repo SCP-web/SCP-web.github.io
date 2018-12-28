@@ -23,7 +23,6 @@ class Document extends Gamestate {
         
             // Examine the text in the response
             response.json().then(function(data) {
-                // this.tempString = data;
                 console.log(data);
             });
             }
