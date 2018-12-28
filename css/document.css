@@ -11,6 +11,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    overflow-y: auto;
     
     /* border-right: .1em solid; */
     /* fallback */
@@ -29,3 +30,10 @@
     color: black;
     background-color: rgb(0, 255, 0);
 }
+
+.nano { background: #bba; width: 500px; height: 500px; }
+.nano > .nano-content { padding: 10px; }
+.nano > .nano-pane   { 
+    background: #888;
+}
+.nano > .nano-pane > .nano-slider { background: rgb(0, 255, 0); }

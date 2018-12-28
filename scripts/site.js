@@ -94,7 +94,7 @@ class Site extends Gamestate {
         });
     }
 
-    onKeypress(self, event) {
+    onkeyDown(self, event) {
         // console.log(event);
 
         switch (event.key) {

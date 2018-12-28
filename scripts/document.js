@@ -29,8 +29,8 @@ class Document extends Gamestate {
         this.scanWord();
     }
 
-    onKeypress(self, event) {
-        // console.log(event);
+    onkeyDown(self, event) {
+        // console.log(self, event);
 
         switch (event.key) {
             case "ArrowRight":
@@ -60,7 +60,12 @@ class Document extends Gamestate {
     }
 
     updateHtml() {
-        document.getElementById("document").innerHTML = this.processString();
+        document
+            .getElementById("document")
+            .getElementsByClassName("nano-content")[0]
+            .innerHTML = this.processString();
+        // update the scroll bar
+        $(".nano").nanoScroller();
     }
 
     processString() {

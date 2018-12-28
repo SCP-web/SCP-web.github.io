@@ -24,7 +24,7 @@ K: 200N
 
 K: 500N, I don't think this is going anywhere Cynthia
 
-J: Move into kilonewton ranges, if we're going to report that this thing is indestructible be'd better at least be sure.
+J: Move into kilonewton ranges, if we're going to report that this thing is indestructible we'd better at least be sure.
 
 K: 1kN
 
