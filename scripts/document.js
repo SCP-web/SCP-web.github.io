@@ -15,16 +15,17 @@ class Document extends Gamestate {
         fetch(filepath)
         .then(
             function(response) {
-            if (response.status !== 200) {
-                console.log('Looks like there was a problem. Status Code: ' +
-                response.status);
-                return;
-            }
-            console.log(response)
-            // Examine the text in the response
-            // response.json().then(function(data) {
-            //     console.log(data);
-            // });
+                console.log("response", typeof response, response);
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' +
+                    response.status);
+                    return;
+                }
+                // console.log(response)
+                // Examine the text in the response
+                // response.json().then(function(data) {
+                //     console.log(data);
+                // });
             }
         )
         .catch(function(err) {
