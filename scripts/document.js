@@ -22,7 +22,7 @@ class Document extends Gamestate {
             }
         
             // Examine the text in the response
-            response.json().then(function(data) {
+            response.text().then(function(data) {
                 console.log(data);
             });
             }
