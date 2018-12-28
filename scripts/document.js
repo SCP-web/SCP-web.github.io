@@ -20,7 +20,7 @@ class Document extends Gamestate {
                 response.status);
                 return;
             }
-            console.log(response.json)
+            console.log(response)
             // Examine the text in the response
             // response.json().then(function(data) {
             //     console.log(data);
