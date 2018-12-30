@@ -82,7 +82,7 @@ class MapManager extends Gamestate {
         this.addSite(
             new THREE.Vector3(0, 0, 0), 
             [
-                new Document("./assets/text/lorem_ipsum.txt")
+                new Document("http://127.0.0.1:5500/assets/text/lorem_ipsum.txt")
                 // new Document("andrew"),
             ]
         );
