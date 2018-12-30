@@ -72,8 +72,9 @@ class MapManager extends Gamestate {
             "Site 1",
             new THREE.Vector3(0, 0, 0), 
             [
-                new Document("./assets/text/sites/1/SCP-9001.txt", []),
-                new Document("./assets/text/sites/1/SCP-9002.txt", []),
+                // new Document("http://127.0.0.1:5500/assets/text/lorem_ipsum.txt"),
+                new Document("http://127.0.0.1:5500/assets/text/sites/1/SCP-9001.txt"),
+                new Document("http://127.0.0.1:5500/assets/text/sites/1/SCP-9002.txt"),
             ]
         );
 

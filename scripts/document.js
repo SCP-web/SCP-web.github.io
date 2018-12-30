@@ -6,6 +6,7 @@ class Document extends Gamestate {
         // this.content = get.the.file.content;
 
         let tempString = "**Item #:** SCP-9001\n**Object Class:** Safe\nFlexure Strength: > 50 kN\n**Special Containment Procedures:**\nSCP-9001 is to be kept within a locked safe in Site-$$$. The safe should be composed of only opaque materials.\n**Description:**\nSCP-9001 is a reflective black cuboid 10cm in diameter. One face of SCP-9001 is slightly curved, while laser measurements indicate no bumps or depressions of any kind on any other faces. Apart from the curved face, all faced meet each other face at exactly 90 TODO degrees. No part of SCP-9001 can be damaged with conventional tools.\n\n**Addendum:** Monitored research session 9001-1\nParticipants:\tDr Jonas Knecht (K) - Examiner\n\t\t\tDr Cynthia Jefferson (J) - Surpervisor\n\nDate: 10/07/2017\n\nK: Beginning tensile strength testing\n\nK: 100N\n\nK: 200N\n\nK: 500N, I don't think this is going anywhere Cynthia\n\nJ: Move into kilonewton ranges, if we're going to report that this thing is indestructible be'd better at least be sure.\n\nK: 1kN\n\nK: 10kN\n\nK: 25kN\n\nK: 50kN. We'll have to call it there Cynthia, the only deformation is in our instruments.\n";
+        this.loadFile(file);
 
         this.words = tempString.split(/[\n\s]+/);
         this.separators = tempString
@@ -16,6 +17,27 @@ class Document extends Gamestate {
             );
         this.currentWord = 0;
         this.lineBreaks = [];
+    }
+
+    loadFile(filepath) {
+        let self = this;
+        fetch(filepath)
+        .then(
+            function(response) {
+                console.log("response", response);
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' +
+                    response.status);
+                    return;
+                }
+                response.text().then(text => {
+                    self.temp = text;
+                })
+            }
+        )
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+        });
     }
 
     enter() {
@@ -51,7 +73,7 @@ class Document extends Gamestate {
             case "a":
                 this.currentWord--;
                 if (this.currentWord < 0)
-                    this.currentWord = this.words.length - 1;
+                    this.currentWord = this.words.length - 2;
                 break;
             case "ArrowDown":
             case "s":
