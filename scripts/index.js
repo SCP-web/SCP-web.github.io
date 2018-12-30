@@ -1,5 +1,6 @@
 let titleManager = new TitleManager();
 let mapManager = new MapManager();
+let gamestates = [];
 function initDocument() {
     // https://github.com/jamesflorentino/nanoScrollerJS
     $(".nano").nanoScroller();

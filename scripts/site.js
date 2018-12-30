@@ -1,11 +1,8 @@
 class Site extends Gamestate {
-    constructor(pos, documents) {
+    constructor(name, pos, documents) {
         super();
-        this.mapManager = mapManager;
+        this.name = name;
         
-        this.documents = [];
-        this.selectedDoc = 0;
-
         let geometry = new THREE.BoxGeometry(100, 100, 100);
         let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         this.model = new THREE.Mesh(geometry, material);
@@ -20,6 +17,8 @@ class Site extends Gamestate {
             .add(new THREE.Vector3(0, 100, 400));    
         this.model.managingClass = this;
 
+        this.selectedDoc = 0;
+        this.documents = [];
         this.addDocuments(documents);
     }
 
@@ -41,14 +40,16 @@ class Site extends Gamestate {
                 this.documents.push(document);
             }
         }
+        console.log("Documents", this.documents);
         this.updateDocList();
     }
 
     openDocument() {
-        console.log("opening document", this.documents[this.selectedDoc].name);
+        console.log("opening document", this.selectedDoc + ":", this.documents[this.selectedDoc].name);
         document.getElementById("map").style.display = "none";
-        this.documents[this.selectedDoc].enter();
         this.exit();
+        gamestates[gamestates.length - 1].exit();
+        this.documents[this.selectedDoc].enter();
     }
 
     incrementDocList() {
@@ -113,5 +114,14 @@ class Site extends Gamestate {
             default:
                 break;
         }
+    }
+
+    onResize(self, event) {
+        gamestates[gamestates.length - 2].onResize(gamestates[gamestates.length - 2], event);
+        // let width = self.container.getBoundingClientRect().width;
+        // let height = self.container.getBoundingClientRect().height;
+        // self.renderer.setSize(width, height);
+        // self.camera.aspect = width / height;
+        // self.camera.updateProjectionMatrix();
     }
 }

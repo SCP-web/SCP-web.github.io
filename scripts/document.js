@@ -1,13 +1,21 @@
 class Document extends Gamestate {
-    constructor(file) {
+    constructor(file, keywords) {
         super();
         // this.name = get.the.file.name;
-        this.name = "Document";
+        this.name = file.match(/(?:.*\/)*(.*)/)[1];
         // this.content = get.the.file.content;
 
-        this.tempString = "**Item #:** SCP-9001\n**Object Class:** Safe\nFlexure Strength: > 50 kN\n**Special Containment Procedures:**\nSCP-9001 is to be kept within a locked safe in Site-$$$. The safe should be composed of only opaque materials.\n**Description:**\nSCP-9001 is a reflective black cuboid 10cm in diameter. One face of SCP-9001 is slightly curved, while laser measurements indicate no bumps or depressions of any kind on any other faces. Apart from the curved face, all faced meet each other face at exactly 90 TODO degrees. No part of SCP-9001 can be damaged with conventional tools.\n\n**Addendum:** Monitored research session 9001-1\nParticipants:\tDr Jonas Knecht (K) - Examiner\n\t\t\tDr Cynthia Jefferson (J) - Surpervisor\n\nDate: 10/07/2017\n\nK: Beginning tensile strength testing\n\nK: 100N\n\nK: 200N\n\nK: 500N, I don't think this is going anywhere Cynthia\n\nJ: Move into kilonewton ranges, if we're going to report that this thing is indestructible be'd better at least be sure.\n\nK: 1kN\n\nK: 10kN\n\nK: 25kN\n\nK: 50kN. We'll have to call it there Cynthia, the only deformation is in our instruments.\n";
+        let tempString = "**Item #:** SCP-9001\n**Object Class:** Safe\nFlexure Strength: > 50 kN\n**Special Containment Procedures:**\nSCP-9001 is to be kept within a locked safe in Site-$$$. The safe should be composed of only opaque materials.\n**Description:**\nSCP-9001 is a reflective black cuboid 10cm in diameter. One face of SCP-9001 is slightly curved, while laser measurements indicate no bumps or depressions of any kind on any other faces. Apart from the curved face, all faced meet each other face at exactly 90 TODO degrees. No part of SCP-9001 can be damaged with conventional tools.\n\n**Addendum:** Monitored research session 9001-1\nParticipants:\tDr Jonas Knecht (K) - Examiner\n\t\t\tDr Cynthia Jefferson (J) - Surpervisor\n\nDate: 10/07/2017\n\nK: Beginning tensile strength testing\n\nK: 100N\n\nK: 200N\n\nK: 500N, I don't think this is going anywhere Cynthia\n\nJ: Move into kilonewton ranges, if we're going to report that this thing is indestructible be'd better at least be sure.\n\nK: 1kN\n\nK: 10kN\n\nK: 25kN\n\nK: 50kN. We'll have to call it there Cynthia, the only deformation is in our instruments.\n";
 
-        this.currentIndex = 0;
+        this.words = tempString.split(/[\n\s]+/);
+        this.separators = tempString
+            .match(/[\n\s]+/g)
+            .map(s => s
+                .replace(/\n/g, "<br>")
+                .replace(/\t/g, "&nbsp&nbsp&nbsp&nbsp")
+            );
+        this.currentWord = 0;
+        this.lineBreaks = [];
     }
 
     enter() {
@@ -35,18 +43,67 @@ class Document extends Gamestate {
         switch (event.key) {
             case "ArrowRight":
             case "d":
-            this.currentIndex = this.nextSeparator(this.tempString, this.currentIndex) + 1;
-            if (this.currentIndex === this.tempString.length + 1)
-                this.currentIndex = 0;
+                this.currentWord++;
+                if (this.currentWord >= this.words.length - 1)
+                    this.currentWord = 0;
                 break;
             case "ArrowLeft":
             case "a":
-                if (this.currentIndex === 0)
-                    this.currentIndex = this.tempString.length;
-                this.currentIndex = Math.max(
-                    this.tempString.slice(0, this.currentIndex - 1).lastIndexOf(" ") + 1,
-                    this.tempString.slice(0, this.currentIndex - 1).lastIndexOf("\n") + 1
-                );
+                this.currentWord--;
+                if (this.currentWord < 0)
+                    this.currentWord = this.words.length - 1;
+                break;
+            case "ArrowDown":
+            case "s":
+                // word down
+                {
+                    if (this.lineBreaks[this.lineBreaks.length - 1] <= this.currentWord) {
+                        // cursor is at the bottom
+                        break;
+                    }
+                    let lBreak = this.lineBreaks.findIndex(b => b > this.currentWord);
+                    let oldPos = this.getWordMid(this.currentWord);
+                    this.currentWord = this.lineBreaks[lBreak];
+                    let oldDist = Math.abs(
+                        this.getWordMid(this.currentWord) - oldPos
+                    );
+                    let dist = Math.abs(
+                        this.getWordMid(this.currentWord + 1) - oldPos
+                    );
+                    while (dist < oldDist && this.currentWord < this.lineBreaks[lBreak + 1] - 1) {
+                        this.currentWord++;
+                        oldDist = dist;
+                        dist = Math.abs(
+                            this.getWordMid(this.currentWord + 1) - oldPos
+                        );
+                    }
+                }
+                break;
+            case "ArrowUp":
+            case "w":
+                // word up
+                {
+                    let lBreak = this.lineBreaks
+                        .reduce((acc, br) => acc += (br <= this.currentWord ? 1 : 0), -2)
+                    if (lBreak === -1) // already at the top of the document
+                        break;
+                    let oldPos = this.getWordMid(this.currentWord);
+                    this.currentWord = this.lineBreaks[lBreak];
+                    let oldDist = Math.abs(
+                        this.getWordMid(this.currentWord) - oldPos
+                    );
+                    let dist = Math.abs(
+                        this.getWordMid(this.currentWord + 1) - oldPos
+                    );
+                    let lineEnd = lBreak + 1 < this.lineBreaks.length ? this.lineBreaks[lBreak + 1] : this.words.length;
+                    while (dist < oldDist && this.currentWord < lineEnd - 1) {
+                        this.currentWord++;
+                        oldDist = dist;
+                        dist = Math.abs(
+                            this.getWordMid(this.currentWord + 1) - oldPos
+                        );
+                    }
+                }
                 break;
             case "Enter":
             case " ":
@@ -59,72 +116,73 @@ class Document extends Gamestate {
         this.updateHtml();
     }
 
+    onResize(self, event) {
+        // update line breaks
+        this.lineBreaks = this.findBreaks();
+        // update the scroll bar
+        $(".nano").nanoScroller();
+    }
+
     updateHtml() {
         document
             .getElementById("document")
             .getElementsByClassName("nano-content")[0]
             .innerHTML = this.processString();
+        // update line breaks
+        this.lineBreaks = this.findBreaks();
         // update the scroll bar
         $(".nano").nanoScroller();
     }
 
     processString() {
+        let wTags = this.words
+            .map(w => "<w>" + w + "</w>")
+        
+        wTags[this.currentWord] = "<w class='highlight'>" + this.words[this.currentWord] + "</w>";
 
-        let nextSeparator = this.nextSeparator(this.tempString, this.currentIndex);
+        let html = "";
 
-        return this.tempString
-                .slice(0, this.currentIndex)
-                .concat("<span class='highlight'>")
-                .concat(
-                    this.tempString
-                        .slice(this.currentIndex, nextSeparator)
-                ).concat("</span>")
-                .concat(
-                    this.tempString
-                        .slice(nextSeparator) 
-                )
-                .replace(/\n/g, "<br>")
-                .replace(/\t/g, "&nbsp&nbsp&nbsp&nbsp")
+        wTags.forEach((w, i) => {
+            html += w;
+            if (i !== this.words.length - 1)
+                html += this.separators[i];
+        })
+        
+        return html;
+    }
+
+    findBreaks() {
+        let words = document.getElementById("document").getElementsByTagName('w');
+        let lastTop = 0;
+        let lineBreaks = [];
+        for (let i=0; i<words.length; i++) {
+            let newTop = words[i].getBoundingClientRect().top;
+            if (newTop !== lastTop) {
+                // console.log("new line " + words[i].textContent + " at: " + newTop);
+                lineBreaks.push(i);
+                lastTop = newTop;
+            }
+        }
+        return lineBreaks;
     }
 
     scanWord() {
-        alert(
-            "currentIndex: " + 
-            this.currentIndex + 
-            "\nword: " + 
-            document.getElementById("document").getElementsByClassName("highlight")[0].textContent +
-            "\nnextSeparator: " +
-            this.nextSeparator(this.tempString, this.currentIndex)
-        );
         // "scan" the currently highlighted word to see if it references any other articles
-    }
-
-    nextSeparator(string, index) {
-        let nextSpace = string
-            .slice(index)
-            .indexOf(" ") + index;
-
-        let nextNewline = string
-            .slice(index)
-            .indexOf("\n") + index;
-
-        let nextSeparator = nextSpace;
-        
-        if ( (nextNewline !== -1 && nextNewline < nextSpace) || nextSpace === -1)
-            nextSeparator = nextNewline;    
-
-        if (nextSeparator === index - 1)
-            nextSeparator = string.length;
-        
-        return nextSeparator
-    }
-
-    previousSeparator(string, index) {
-        if (index === 0)
-            return string.length;
-        return Math.max(
-            string.slice(0, index - 1).lastIndexOf(" ") + 1,
-            string.slice(0, index - 1).lastIndexOf("\n") + 1
+        alert(
+            "word: " + 
+            this.words[this.currentWord]
         );
+    }
+
+    getWordBounds(wordIndex) {
+        return document
+            .getElementById("document")
+            .getElementsByTagName('w')[wordIndex]
+            .getBoundingClientRect();
+    }
+
+    getWordMid(wordIndex) {
+        let bounds = this.getWordBounds(wordIndex);
+        return bounds.left + (bounds.right - bounds.left) / 2;
     }
 }

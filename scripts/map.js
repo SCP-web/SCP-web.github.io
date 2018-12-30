@@ -40,14 +40,12 @@ class MapManager extends Gamestate {
     }
 
     selectSite(site) {
-        
         this.selectedSite = site;
         this.zoom(
             site.model.viewPos, 
             site.model.camOffset
         );
         this.selectedSite.enter();
-        this.exit();
     }
 
     deselectSite() {
@@ -66,24 +64,16 @@ class MapManager extends Gamestate {
         this.container = document.getElementById("map");
         this.container.appendChild(this.renderer.domElement);
 
-
-        window.addEventListener("resize", function() {
-            let width = this.container.getBoundingClientRect().width;
-            let height = this.container.getBoundingClientRect().height;
-            renderer.setSize(width, height);
-            cam.aspect = width / height;
-            cam.updateProjectionMatrix();
-        });
-
         let plane = new THREE.GridHelper(1000, 50);
         plane.material.color = new THREE.Color("gray");
         this.scene.add(plane);
         
         this.addSite(
+            "Site 1",
             new THREE.Vector3(0, 0, 0), 
             [
-                new Document("grace"),
-                new Document("andrew"),
+                new Document("./assets/text/sites/1/SCP-9001.txt", []),
+                new Document("./assets/text/sites/1/SCP-9002.txt", []),
             ]
         );
 
@@ -132,6 +122,17 @@ class MapManager extends Gamestate {
                 this.selectSite(intersect.object.managingClass);
             }
         }
+    }
+
+    onResize(self, event) {
+
+        console.log("resizing canvas", self);
+
+        let width = self.container.getBoundingClientRect().width;
+        let height = self.container.getBoundingClientRect().height;
+        self.renderer.setSize(width, height);
+        self.camera.aspect = width / height;
+        self.camera.updateProjectionMatrix();
     }
 
     render() {
