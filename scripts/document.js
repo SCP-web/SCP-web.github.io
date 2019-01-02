@@ -24,7 +24,6 @@ class Document extends Gamestate {
         fetch(filepath)
         .then(
             function(response) {
-                console.log("response", response);
                 if (response.status !== 200) {
                     console.log('Looks like there was a problem. Status Code: ' +
                     response.status);
@@ -65,21 +64,23 @@ class Document extends Gamestate {
         switch (event.key) {
             case "ArrowRight":
             case "d":
+                event.preventDefault();
                 this.currentWord++;
                 if (this.currentWord >= this.words.length - 1)
                     this.currentWord = 0;
                 break;
             case "ArrowLeft":
             case "a":
+                event.preventDefault();
                 this.currentWord--;
                 if (this.currentWord < 0)
                     this.currentWord = this.words.length - 2;
                 break;
             case "ArrowDown":
             case "s":
-                // word down
+                event.preventDefault();
                 {
-                    if (this.lineBreaks[this.lineBreaks.length - 1] <= this.currentWord) {
+                    if (this.lineBreaks[this.lineBreaks.length - 2] <= this.currentWord) {
                         // cursor is at the bottom
                         break;
                     }
@@ -103,12 +104,15 @@ class Document extends Gamestate {
                 break;
             case "ArrowUp":
             case "w":
-                // word up
+                event.preventDefault();
+
                 {
                     let lBreak = this.lineBreaks
                         .reduce((acc, br) => acc += (br <= this.currentWord ? 1 : 0), -2)
-                    if (lBreak === -1) // already at the top of the document
+                    if (lBreak === -1) {
+                         // already at the top of the document
                         break;
+                    }
                     let oldPos = this.getWordMid(this.currentWord);
                     this.currentWord = this.lineBreaks[lBreak];
                     let oldDist = Math.abs(
@@ -126,15 +130,16 @@ class Document extends Gamestate {
                         );
                     }
                 }
+
                 break;
             case "Enter":
             case " ":
+                event.preventDefault();
                 self.scanWord();
                 break;
             default:
                 break;
         }
-
         this.updateHtml();
     }
 
@@ -154,6 +159,7 @@ class Document extends Gamestate {
         this.lineBreaks = this.findBreaks();
         // update the scroll bar
         $(".nano").nanoScroller();
+        // $(".nano").nanoScroller({ scrollTop: this.getWordBounds(this.currentWord).top });
     }
 
     processString() {
@@ -175,9 +181,9 @@ class Document extends Gamestate {
 
     findBreaks() {
         let words = document.getElementById("document").getElementsByTagName('w');
-        let lastTop = 0;
+        let lastTop = undefined;
         let lineBreaks = [];
-        for (let i=0; i<words.length; i++) {
+        for (let i = 0; i < words.length; i++) {
             let newTop = words[i].getBoundingClientRect().top;
             if (newTop !== lastTop) {
                 // console.log("new line " + words[i].textContent + " at: " + newTop);
@@ -206,5 +212,20 @@ class Document extends Gamestate {
     getWordMid(wordIndex) {
         let bounds = this.getWordBounds(wordIndex);
         return bounds.left + (bounds.right - bounds.left) / 2;
+    }
+
+    debugCheck(message) {
+        if (message === undefined)
+            message = "";
+
+        let wTags = document
+            .getElementById("document")
+            .getElementsByTagName('w');
+
+        // if(this.currentWord < 0 || this.currentWord >= this.words.length || typeof this.currentWord !== 'number')
+        //     throw new Error("Bad up: " + this.currentWord + " (" + this.words[this.currentWord] + ")");
+        // console.log(message, this.lineBreaks);
+        // console.log("words:" + words.length, "lineBreaks", lineBreaks.length);
+        console.log("top", wTags[0].getBoundingClientRect().top);
     }
 }

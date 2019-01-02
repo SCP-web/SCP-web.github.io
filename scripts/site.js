@@ -48,7 +48,7 @@ class Site extends Gamestate {
         console.log("opening document", this.selectedDoc + ":", this.documents[this.selectedDoc].name);
         document.getElementById("map").style.display = "none";
         this.exit();
-        gamestates[gamestates.length - 1].exit();
+        getGamestate().exit();
         this.documents[this.selectedDoc].enter();
     }
 
@@ -117,7 +117,7 @@ class Site extends Gamestate {
     }
 
     onResize(self, event) {
-        gamestates[gamestates.length - 2].onResize(gamestates[gamestates.length - 2], event);
+        getGamestate(-2).onResize(getGamestate(-2), event);
         // let width = self.container.getBoundingClientRect().width;
         // let height = self.container.getBoundingClientRect().height;
         // self.renderer.setSize(width, height);

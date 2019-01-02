@@ -2,6 +2,7 @@ class MapManager extends Gamestate {
     constructor() {
         super();
 
+        this.container = undefined;
         this.renderer = new THREE.WebGLRenderer({antialias: true});
         this.camera = new THREE.PerspectiveCamera(
             75,
@@ -55,14 +56,12 @@ class MapManager extends Gamestate {
 
     enter() {
         super.enter();
+
+        this.container.style.display = "block";
+        
+        this.onResize(this);
+
         this.resetCamera();
-
-        console.log("Initialising scene");
-        let cam = this.camera;
-        let renderer = this.renderer;
-
-        this.container = document.getElementById("map");
-        this.container.appendChild(this.renderer.domElement);
 
         let plane = new THREE.GridHelper(1000, 50);
         plane.material.color = new THREE.Color("gray");
@@ -127,7 +126,7 @@ class MapManager extends Gamestate {
 
     onResize(self, event) {
 
-        console.log("resizing canvas", self);
+        console.log("resizing canvas");
 
         let width = self.container.getBoundingClientRect().width;
         let height = self.container.getBoundingClientRect().height;
