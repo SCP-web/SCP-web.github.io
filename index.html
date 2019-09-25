@@ -1,22 +1,24 @@
  <html>
     <head>
-        <script src="scripts/jquery-3.3.1.js"></script>
-        <script src="scripts/jquery.nanoscroller.js"></script>
-        <script src="scripts/three.min.js"></script>
-        <script src="scripts/tween.min.js"></script>
-        <script src="scripts/OrbitControls.js"></script>
-        <script src="scripts/CSS3DRenderer.js"></script>
-        <script src="scripts/gamestate.js"></script>
-        <script src="scripts/title.js"></script>
-        <script src="scripts/map.js"></script>
-        <script src="scripts/index.js"></script>
-        <script src="scripts/site.js"></script>
-        <script src="scripts/document.js"></script>
+        <script src="libs/jquery-3.3.1.js"></script>
+        <script src="libs/jquery.nanoscroller.js"></script>
+        <script src="libs/three.min.js"></script>
+        <script src="libs/tween.min.js"></script>
+        <script src="libs/OrbitControls.js"></script>
+        <script src="libs/CSS3DRenderer.js"></script>
+        <script src="js/gamestate.js"></script>
+        <script src="js/title.js"></script>
+        <script src="js/map.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/site.js"></script>
+        <script src="js/document.js"></script>
         <link rel="stylesheet" type="text/css" href="css/nanoscroller.css"/>
         <link rel="stylesheet" type="text/css" href="css/index.css"/>
         <link rel="stylesheet" type="text/css" href="css/title.css"/>
         <link rel="stylesheet" type="text/css" href="css/map.css"/>
         <link rel="stylesheet" type="text/css" href="css/document.css"/>
+
+        <meta charset="utf-8"/>
     </head>
     <body onload="initDocument();">
         <div id="container">
@@ -116,8 +118,8 @@
                 <div></div>
                 <div>
                     <ul class="menu-items">
-                        <li onclick="titleManager.startGame();">One</li>
-                        <li>Two</li>
+                        <li><span>Start Game</span></li>
+                        <li><span>Options</span></li>
                     </ul>
                 </div>
                 <div></div>

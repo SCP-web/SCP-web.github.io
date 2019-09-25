@@ -58,7 +58,7 @@ class Document extends Gamestate {
         this.scanWord();
     }
 
-    onkeyDown(self, event) {
+    onKeyDown(self, event) {
         // console.log(self, event);
 
         switch (event.key) {
