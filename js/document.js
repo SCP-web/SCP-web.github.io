@@ -1,6 +1,7 @@
 class Document extends Gamestate {
     constructor(file, keywords) {
         super();
+        this.site = null;
         this.name = file.match(/(?:.*\/)*(.*)/)[1];
         this.currentWord = 0;
         this.lineBreaks = [];
@@ -132,6 +133,13 @@ class Document extends Gamestate {
             case " ":
                 event.preventDefault();
                 self.scanWord();
+                break;
+
+            case "Escape":
+                event.preventDefault();
+                self.exit();
+                mapManager.enter();
+                this.site.enter();
                 break;
             default:
                 break;

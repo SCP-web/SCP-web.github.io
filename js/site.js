@@ -1,6 +1,9 @@
 class Site extends Gamestate {
     constructor(name, pos, documents) {
         super();
+
+        // this.debug = true;
+
         this.name = name;
         
         let geometry = new THREE.BoxGeometry(100, 100, 100);
@@ -17,19 +20,49 @@ class Site extends Gamestate {
             .add(new THREE.Vector3(0, 100, 400));    
         this.model.managingClass = this;
 
-        this.selectedDoc = 0;
         this.documents = [];
         this.addDocuments(documents);
+
+        this.selectedButton = null;
     }
 
     enter() {
+        $('#map canvas').css('pointer-events', 'none');
         document.getElementById("doc-list").setAttribute('class', "opened");
         super.enter();
+        this.updateDocList();
     }
 
     exit() {
+        $('#map canvas').css('pointer-events', 'auto');
         document.getElementById("doc-list").setAttribute('class', "closed");
         super.exit();
+    }
+
+    createEventListeners() {
+        super.createEventListeners();
+
+        $("#doc-list>li").mouseenter((event) => {
+            this.selectButton($(event.target));
+        });
+
+        $("#doc-list>li").mouseleave((event) => {
+            $(event.target).removeClass("selected");
+            this.selectedButton = null;
+        });
+
+        $("#doc-list>li").click((event) => {
+            $(event.target).removeClass("selected");
+            this.activateButton();
+        });
+    }
+
+    destroyEventListeners() {
+        super.destroyEventListeners();
+
+        $("#doc-list>li").unbind("mouseenter");
+        $("#doc-list>li").unbind("mouseleave");
+        $("#doc-list>li").unbind("click");
     }
 
     addDocuments(...args) {
@@ -40,28 +73,8 @@ class Site extends Gamestate {
                 this.documents.push(document);
             }
         }
-        console.log("Documents", this.documents);
-        this.updateDocList();
-    }
 
-    openDocument() {
-        console.log("opening document", this.selectedDoc + ":", this.documents[this.selectedDoc].name);
-        document.getElementById("map").style.display = "none";
-        this.exit();
-        getGamestate().exit();
-        this.documents[this.selectedDoc].enter();
-    }
-
-    incrementDocList() {
-        if (this.selectedDoc < this.documents.length - 1)
-            this.selectedDoc++;
-        this.updateDocList();
-    }
-
-    decrementDocList() {
-        if (this.selectedDoc > 0)
-            this.selectedDoc--;
-        this.updateDocList();
+        if(this.debug) console.log('Site ' + this.name + 'added documents:', this.documents);
     }
 
     updateDocList() {
@@ -70,46 +83,89 @@ class Site extends Gamestate {
     }
 
     destroyDocList() {
-        let docList = document.getElementById("doc-list");
-        while (docList.firstChild) {
-            docList.removeChild(docList.firstChild);
-        }
+
+        // console.log("Site " + this.name + " destroying event doclist");
+
+        $('#doc-list').children(':not(:last-child)').remove();
+        this.destroyEventListeners();
     }
 
     createDocList() {
-        let docList = document.getElementById("doc-list");
-        let selectedDoc = this.selectedDoc;
+
+        let docList = $('#doc-list');
         this.documents.forEach((doc, i) => {
             let listItem = document.createElement("li");
-
-            if (selectedDoc === i) {
-                // listItem.innerHTML = ">&nbsp" + doc.name;
-                listItem.setAttribute('class', "selected");
-            } 
-            // else {
-            //     listItem.innerHTML = doc.name;
-            // }
             listItem.innerHTML = doc.name;
-
-            docList.appendChild(listItem);
+            $(listItem).insertBefore('#doc-list>li:last');
+            if(this.debug) console.log("Site " + this.name + " added document " + doc.name + ":", listItem);
         });
+
+        this.selectButton(docList.children("li:first"));
+        
+        this.createEventListeners();
+    }
+
+    selectNextButton() {
+        if (this.selectedButton === null || this.selectedButton.index() === $("#doc-list>li").length - 1) {
+            this.selectButton($("#doc-list>li:first"));
+        } else {
+            this.selectButton(this.selectedButton.next());
+        }
+    }
+
+    selectPreviousButton() {
+        if (this.selectedButton === null || this.selectedButton.index() === 0) {
+            this.selectButton($("#doc-list>li:last"));
+        } else {
+            this.selectButton(this.selectedButton.prev());
+        }
+    }
+
+    selectButton(button) {
+        if (this.selectedButton !== null) {
+            this.selectedButton.removeClass("selected");
+        }
+        this.selectedButton = button;
+        // TODO: might want make the selected document have text: ">&nbsp" + doc.name
+        this.selectedButton.addClass("selected");
+    }
+
+    activateButton() {
+        if (this.selectedButton === null)
+            return;
+
+        if (this.selectedButton.parent().index() < this.documents.length - 1)
+            this.openDocument();
+        else
+            this.exit();
+    }
+
+    openDocument() {
+        this.exit();
+        getGamestate().exit();
+        let documentToShow = this.documents[this.selectedButton.index()];
+        if(this.debug) console.log('Site ' + this.name + ' opening document', (this.selectedButton.index() + 1) + ":", documentToShow.name);
+        documentToShow.site = this;
+        documentToShow.enter();
     }
 
     onKeyDown(self, event) {
-        // console.log(event);
-
         switch (event.key) {
-            case "ArrowUp":
-            case "w":
-                self.decrementDocList();
-                break;
             case "ArrowDown":
             case "s":
-                self.incrementDocList();
+                event.preventDefault();
+                this.selectNextButton();
                 break;
+            case "ArrowUp":
+            case "w":
+                event.preventDefault();
+                this.selectPreviousButton();
+                break;
+
             case "Enter":
             case " ":
-                self.openDocument();
+                event.preventDefault();
+                this.activateButton();
                 break;
             default:
                 break;

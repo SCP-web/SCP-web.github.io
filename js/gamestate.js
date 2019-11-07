@@ -4,6 +4,7 @@ class Gamestate {
         this.onPointerDownAux = null;
         this.onKeyDownAux = null;
         this.onResizeAux = null;
+        this.debug = false;
     }
 
     createEventListeners() {

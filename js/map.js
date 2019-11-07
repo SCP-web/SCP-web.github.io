@@ -29,10 +29,28 @@ class MapManager extends Gamestate {
         this.ray = new THREE.Raycaster();
 
         this.sites = [];
-
+        
         this.selectedSite = undefined;
-
+        
         this.animating = false;
+
+        this.resetCamera();
+
+        let plane = new THREE.GridHelper(1000, 50);
+        plane.material.color = new THREE.Color("gray");
+        this.scene.add(plane);
+        
+        this.addSite(
+            "Site 1",
+            new THREE.Vector3(0, 0, 0), 
+            [
+                // new Document("http://127.0.0.1:5500/assets/text/lorem_ipsum.txt"),
+                new Document("http://127.0.0.1:5500/assets/text/sites/1/SCP-9001.txt"),
+                new Document("http://127.0.0.1:5500/assets/text/sites/1/SCP-9002.txt"),
+            ]
+        );
+
+        this.animate();
     }
 
     addSite(...args) { 
@@ -61,28 +79,12 @@ class MapManager extends Gamestate {
         
         this.onResize(this);
 
-        this.resetCamera();
-
-        let plane = new THREE.GridHelper(1000, 50);
-        plane.material.color = new THREE.Color("gray");
-        this.scene.add(plane);
-        
-        this.addSite(
-            "Site 1",
-            new THREE.Vector3(0, 0, 0), 
-            [
-                // new Document("http://127.0.0.1:5500/assets/text/lorem_ipsum.txt"),
-                new Document("http://127.0.0.1:5500/assets/text/sites/1/SCP-9001.txt"),
-                new Document("http://127.0.0.1:5500/assets/text/sites/1/SCP-9002.txt"),
-            ]
-        );
-
         this.animating = true;
-
-        this.animate();
     }
 
     exit() {
+        this.container.style.display = "none";
+        this.animating = false;
         super.exit();
     }
 
@@ -102,16 +104,6 @@ class MapManager extends Gamestate {
         return this.ray.intersectObjects(this.sites.map(scp => scp.model), true)[0] || false;
     }
 
-    onPointerHover(self, event) {
-        // console.log(this);  
-        let intersect = self.getIntersect(self.getPointer(event));
-        if (intersect) {
-            //   console.log("hover");
-        } else {
-            //   console.log("no");
-        }
-    }
-
     onPointerDown(self, event) {
         let intersect = self.getIntersect(self.getPointer(event));
         if (intersect) {
@@ -126,10 +118,10 @@ class MapManager extends Gamestate {
 
     onResize(self, event) {
 
-        console.log("resizing canvas");
-
+        
         let width = self.container.getBoundingClientRect().width;
         let height = self.container.getBoundingClientRect().height;
+        if (this.debug) console.log("mapManager resizing canvas to " + width + 'x' + height);
         self.renderer.setSize(width, height);
         self.camera.aspect = width / height;
         self.camera.updateProjectionMatrix();
