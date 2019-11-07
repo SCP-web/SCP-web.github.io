@@ -8,7 +8,7 @@ Flexure Strength: > 50 kN
 SCP-9001 is to be kept within a locked safe in Site-$$$. The safe should be composed of only opaque materials.
 
 **Description:**
-SCP-9001 is a reflective black cuboid 10cm in diameter. One face of SCP-9001 is slightly curved, while laser measurements indicate no bumps or depressions of any kind on any other faces. Apart from the curved face, all faced meet each other face at exactly 90 TODO degrees. No part of SCP-9001 can be damaged with conventional tools.
+SCP-9001 is a reflective black cuboid 10cm in diameter. One face of SCP-9001 is slightly curved, while laser measurements indicate no bumps or depressions of any kind on any other faces. Apart from the curved face, all faces meet each other face at exactly 90°. No part of SCP-9001 can be damaged with conventional tools.
 
 **Addendum:** Monitored research session 9001-1
 Participants:   Dr Jonas Knecht (K) - Examiner
