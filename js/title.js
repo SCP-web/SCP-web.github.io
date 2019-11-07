@@ -6,7 +6,6 @@ class TitleManager extends Gamestate {
     }
 
     startGame() {
-        document.getElementById("title").style.display = "none";
         this.exit();
         mapManager.enter();
     }
@@ -18,16 +17,31 @@ class TitleManager extends Gamestate {
             this.selectButton($(event.target).children("span"));
         });
 
-        // $(".menu-items>li").mouseleave((event) => {
-        //     $(event.target).children("span").removeClass("selected");
-        // });
+        $(".menu-items>li").mouseleave((event) => {
+            $(event.target).children("span").removeClass("selected");
+            this.selectedButton = null;
+        });
 
+        $(".menu-items>li").click((event) => {
+            this.activateButton();
+            $(event.target).children("span").removeClass("selected");
+        });
+    }
+
+    enter() {
+        super.enter();
+        this.selectButton($(".menu-items>li:first>span"));
+    }
+
+    exit() {
+        document.getElementById("title").style.display = "none";
+        super.exit();
     }
 
     destroyEventListeners() {
         super.destroyEventListeners();
         $(".menu-items>li").unbind("mouseenter");
-        // $(".menu-items>li").unbind("mouseleave");
+        $(".menu-items>li").unbind("mouseleave");
     }
 
     onKeyDown(self, event) {
@@ -70,6 +84,10 @@ class TitleManager extends Gamestate {
     }
 
     activateButton() {
+
+        if (this.selectedButton === null)
+            return;
+
         switch (this.selectedButton.parent().index()) {
             case 0:
                 this.startGame();
@@ -83,7 +101,11 @@ class TitleManager extends Gamestate {
 
     selectButton(button) {
         if (this.selectedButton !== null) {
-            this.selectedButton.removeClass("selected");
+            try {
+                this.selectedButton.removeClass("selected");
+            } catch(err) {
+                console.error("Error removing selected class from", this.selectedButton);
+            }
         }
         this.selectedButton = button;
         button.addClass("selected");
